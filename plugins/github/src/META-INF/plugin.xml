@@ -1,0 +1,38 @@
+<idea-plugin version="2" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <name>GitHub</name>
+  <id>org.jetbrains.plugins.github</id>
+  <vendor logo="/general/ijLogo.png">JetBrains</vendor>
+  <description>GitHub integration</description>
+
+  <depends>com.intellij.modules.lang</depends>
+  <depends>Git4Idea</depends>
+  <depends>com.intellij.tasks</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
+    <checkoutProvider implementation="org.jetbrains.plugins.github.GithubCheckoutProvider"/>
+    <applicationService serviceInterface="org.jetbrains.plugins.github.GithubSettings"
+                        serviceImplementation="org.jetbrains.plugins.github.GithubSettings"/>
+    <applicationConfigurable instance="org.jetbrains.plugins.github.ui.GitHubSettingsConfigurable"/>
+    <checkoutCompletedListener implementation="org.jetbrains.plugins.github.GithubCheckoutListener" order="after PlatformProjectCheckoutListener"/>
+  </extensions>
+  <actions>
+    <action id="Github.Share" class="org.jetbrains.plugins.github.GithubShareAction">
+      <add-to-group group-id="Vcs.Import"/>
+    </action>
+    <action id="Github.Rebase" class="org.jetbrains.plugins.github.GithubRebaseAction">
+      <add-to-group group-id="Git.Menu"/>
+    </action>
+    <action id="Github.Open.In.Browser" class="org.jetbrains.plugins.github.GithubOpenInBrowserAction">
+      <add-to-group group-id="EditorPopupMenu"/>
+      <add-to-group group-id="ProjectViewPopupMenu"/>
+      <add-to-group group-id="EditorTabPopupMenu"/>
+    </action>
+    <action id="Github.Create.Gist" class="org.jetbrains.plugins.github.GithubCreateGistAction">
+      <add-to-group group-id="EditorPopupMenu"/>
+      <add-to-group group-id="ProjectViewPopupMenu"/>
+      <add-to-group group-id="EditorTabPopupMenu"/>
+    </action>
+    <action id="Github.Rebase.Internal" class="org.jetbrains.plugins.github.GithubRebase"/>
+  </actions>
+</idea-plugin>

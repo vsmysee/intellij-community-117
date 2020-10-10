@@ -1,0 +1,16 @@
+<html>
+<body>
+This inspection reports String concatenation used as
+the argument to <b>StringBuffer.append()</b>,
+<b>StringBuilder.append()</b> or
+<b>Appendable.append()</b>. Such calls
+may profitably be turned into chained append calls on the existing
+<b>StringBuffer/Builder/Appendable</b>, saving the
+cost of an extra <b>StringBuffer/Builder</b>
+allocation. <br>This inspection ignores compile time evaluated String
+concatenations, which when converted to chained append calls would only
+worsen performance.
+<p>
+<small>Powered by InspectionGadgets</small>
+</body>
+</html>
