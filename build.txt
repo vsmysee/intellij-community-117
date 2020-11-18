@@ -1,17 +1,1 @@
-117.SNAPSHOT => 11.1.5
-
-https://github.com/JetBrains/intellij-community/tree/117
-https://download.jetbrains.com/idea/ideaIC-11.1.5d.exe?_ga=2.205728411.926551103.1604454578-1773214424.1591879625
-IDEA jdk => 1.6 jdk add toos.jar to classpath
-
-
-145.2070 => 2016.1.4
-
-https://github.com/JetBrains/adt-tools-base/tree/145.2070  => tools-base
-https://github.com/JetBrains/android/tree/145.2070 ==> android
-https://github.com/JetBrains/intellij-community/tree/145.2070
-
-https://download.jetbrains.com/idea/ideaIC-2016.1.4.exe?_ga=2.46531119.926551103.1604454578-1773214424.1591879625
-
-1.8 => 1.8 jdk  add toos.jar to classpath
-IDEA jdk => 1.6 jdk add toos.jar to classpath
+117.SNAPSHOT
