@@ -1,0 +1,322 @@
+package com.intellij.ide.actions;
+
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CustomShortcutSet;
+import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.editor.EditorFactory;
+import com.intellij.openapi.editor.actionSystem.EditorActionManager;
+import com.intellij.openapi.editor.actionSystem.TypedAction;
+import com.intellij.openapi.editor.event.EditorFactoryAdapter;
+import com.intellij.openapi.editor.event.EditorFactoryEvent;
+import org.jetbrains.annotations.NotNull;
+
+
+public class App implements ApplicationComponent {
+
+  private static final String MODEACTION = "ChangeModeAction";
+
+  private MyTypedActionHandler handler;
+
+  public static EditorMode editorMode = EditorMode.COMMAND;
+
+
+
+  public static enum EditorMode {
+
+    INSERT,
+
+    COMMAND,
+
+    COMMAND2,
+
+    COMMAND3
+
+  }
+
+
+  @Override
+  public void initComponent() {
+
+    EditorActionManager manager = EditorActionManager.getInstance();
+    TypedAction action = manager.getTypedAction();
+
+    handler = new MyTypedActionHandler(action.getHandler());
+    action.setupHandler(handler);
+
+
+    EditorFactory.getInstance().addEditorFactoryListener(new EditorFactoryAdapter() {
+      public void editorCreated(EditorFactoryEvent event) {
+        final Editor editor = event.getEditor();
+        editor.getSettings().setBlockCursor(true);
+
+        AnAction acton = ActionManager.getInstance().getAction(MODEACTION);
+
+        if (acton == null) {
+          acton = new AnAction() {
+            @Override
+            public void actionPerformed(AnActionEvent e) {
+              App.editorMode = EditorMode.COMMAND;
+              for (Editor editor : EditorFactory.getInstance().getAllEditors()) {
+                editor.getSettings().setBlockCursor(true);
+              }
+            }
+          };
+          ActionManager.getInstance().registerAction(MODEACTION, acton);
+        }
+
+
+        acton.registerCustomShortcutSet(CustomShortcutSet.fromString("ctrl I"), editor.getComponent());
+
+      }
+
+    });
+  }
+
+  @Override
+  public void disposeComponent() {
+    EditorActionManager manager = EditorActionManager.getInstance();
+    TypedAction action = manager.getTypedAction();
+    action.setupHandler(handler.getOriginalTypedHandler());
+  }
+
+  @NotNull
+  @Override
+  public String getComponentName() {
+    return "OhMyIDEA";
+  }
+
+
+}
+
+
+
+
+package com.intellij.ide.actions;
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class KeyDef {
+
+  public static Map<App.EditorMode, Map<String, String>> modeMap = new HashMap<App.EditorMode, Map<String, String>>();
+
+  public static Map<String, String> keys_first = new HashMap<String, String>(){{
+
+    put("1", "FindInPath");
+    put("2", "ReplaceInPath");
+    put("3", "HideAllWindows");
+    put("4", "$Cut");
+    put("5", "EditorDuplicate");
+    put("6", "IntroduceVariable");
+    put("7", "EditorDeleteLine");
+    put("8", "GotoFile");
+    put("9", "GotoClass");
+    put("0", "CompileDirty");
+
+    put("q", "FindUsages");
+    put("w", "EditorNextWord");
+    put("W", "EditorPreviousWord");
+    put("e", "EditorSelectWord");
+    put("E", "EditorUnSelectWord");
+    put("R", "CloseContent");
+    put("r", "$Redo");
+    put("t", "NextTab");
+    put("T", "PreviousTab");
+    put("u", "$Undo");
+    put("U", "EditorToggleCase");
+    put("o", "EditorStartNewLine");
+    put("O", "StepOver");
+    put("p", "$Paste");
+    put("a", "RecentFiles");
+    put("s", "NextSplitter");
+    put("S", "PrevSplitter");
+    put("d", "GotoDeclaration");
+    put("F", "FindWordAtCaret");
+    put("f", "ReformatCode");
+    put("g", "Generate");
+    put("h", "EditorLeft");
+    put("H", "EditorLineStart");
+    put("j", "EditorDown");
+    put("J", "EditorMoveToPageBottom");
+    put("k", "EditorUp");
+    put("K", "EditorMoveToPageTop");
+    put("l", "EditorRight");
+    put("L", "EditorLineEnd");
+    put(";", "RunClass");
+    put("'", "GotoSuperMethod");
+    put("z", "SurroundWith");
+    put("x", "$Delete");
+    put("c", "EvaluateExpression");
+    put("v", "ToggleLineBreakpoint");
+    put("b", "Back");
+    put("B", "DebugClass");
+    put("n", "FindNext");
+    put("N", "FindPrevious");
+    put("m", "MethodDown");
+    put("M", "MethodUp");
+    put(">", "$Copy");
+    put(",", "GotoNextError");
+    put("<", "GotoPreviousError");
+    put(".", "EditorCompleteStatement");
+    put("/", "Find");
+    put("?", "Replace");
+  }};
+
+
+  public static Map<String, String> keys_second = new HashMap<String, String>(){{
+
+
+    put("1", "JumpToLastWindow");
+    put("2", "EditorDeleteToLineEnd");
+    put("3", "ActivateProjectToolWindow");
+    put("4", "Inline");
+    put("5", "ShowIntentionActions");
+    put("6", "ImplementMethods");
+    put("7", "OverrideMethods");
+    put("8", "JumpToLastChange");
+    put("9", "EditorJoinLines");
+
+    put("l", "CodeCompletion");
+    put("/", "CommentByLineComment");
+    put("o", "OptimizeImports");
+    put("O", "GotoImplementation");
+
+    put("e", "MoveLineUp");
+    put("E", "MoveStatementUp");
+    put("d", "MoveLineDown");
+    put("D", "MoveStatementDown");
+
+    put("v", "SplitVertically");
+    put("V", "SplitHorizontally");
+
+    put("<", "EditorCodeBlockStart");
+    put(">", "EditorCodeBlockEnd");
+    put("f", "SmartTypeCompletion");
+    put("n", "EditorToggleShowLineNumbers");
+    put("N", "GotoLine");
+
+
+    put("s", "ActivateStructureToolWindow");
+    put("p", "ActivateProjectToolWindow");
+    put("t", "ActivateTerminalToolWindow");
+
+  }};
+
+
+
+  public static Map<String, String> keys_third = new HashMap<String, String>(){{
+
+    put("h", "EditorLeftWithSelection");
+    put("l", "EditorRightWithSelection");
+    put("j", "EditorDownWithSelection");
+    put("k", "EditorUpWithSelection");
+    put("H", "EditorLineStartWithSelection");
+    put("L", "EditorLineEndWithSelection");
+    put("J", "EditorScrollUp");
+    put("K", "EditorScrollDown");
+
+
+  }};
+
+  static {
+    modeMap.put(App.EditorMode.COMMAND,keys_first);
+    modeMap.put(App.EditorMode.COMMAND2,keys_second);
+    modeMap.put(App.EditorMode.COMMAND3,keys_third);
+  }
+
+
+}
+
+
+package com.intellij.ide.actions;
+
+import com.intellij.openapi.actionSystem.*;
+import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.editor.actionSystem.TypedActionHandler;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
+
+public class MyTypedActionHandler implements TypedActionHandler {
+
+  private TypedActionHandler origHandler;
+
+  public MyTypedActionHandler(TypedActionHandler handler) {
+    this.origHandler = handler;
+  }
+
+
+  @Override
+  public void execute(@NotNull Editor editor, char charTyped, @NotNull DataContext dataContext) {
+
+    if (App.editorMode == App.EditorMode.COMMAND) {
+      if (charTyped == 'i') {
+        editor.getSettings().setBlockCursor(false);
+        App.editorMode = App.EditorMode.INSERT;
+        return;
+      }
+      if (charTyped == 'I') {
+        App.editorMode = App.EditorMode.COMMAND3;
+        return;
+      }
+      if (charTyped == 'y') {
+        App.editorMode = App.EditorMode.COMMAND2;
+        return;
+      }
+
+    }
+
+    if (App.editorMode == App.EditorMode.INSERT) {
+      origHandler.execute(editor, charTyped, dataContext);
+      return;
+    }
+
+    Map<String,String> keyMapping = KeyDef.modeMap.get(App.editorMode);
+    if (keyMapping.containsKey(String.valueOf(charTyped))) {
+      doAction(dataContext, keyMapping.get(String.valueOf(charTyped)));
+    }
+
+  }
+
+
+  private void doAction(DataContext dataContext, String actionName) {
+    final AnAction acton = ActionManager.getInstance().getAction(actionName);
+    if (acton != null) {
+      acton.actionPerformed(new AnActionEvent(null, dataContext, "", new Presentation(), ActionManager.getInstance(), 0));
+    }
+  }
+
+
+  public TypedActionHandler getOriginalTypedHandler() {
+    return origHandler;
+  }
+
+
+}
+
+
+<idea-plugin>
+  <id>com.intellij.ohmyidea</id>
+  <name>oh-my-idea</name>
+  <description>IDEA helper</description>
+  <version>1.0.0</version>
+  <vendor url="http://codecode.fun">vsmysee</vendor>
+
+
+  <application-components>
+    <component>
+      <implementation-class>com.intellij.ide.actions.App</implementation-class>
+    </component>
+  </application-components>
+
+  <extensions defaultExtensionNs="com.intellij"></extensions>
+
+  <actions>
+  </actions>
+
+</idea-plugin>
+
