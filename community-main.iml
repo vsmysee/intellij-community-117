@@ -10,6 +10,7 @@
     <orderEntry type="module" module-name="boot" />
     <orderEntry type="module" module-name="bootstrap" />
     <orderEntry type="module" module-name="commander" />
+    <orderEntry type="module" module-name="oh-my-idea" />
     <orderEntry type="module" module-name="compiler-impl" />
     <orderEntry type="module" module-name="compiler-openapi" />
     <orderEntry type="module" module-name="debugger-impl" />

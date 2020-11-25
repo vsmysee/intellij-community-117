@@ -1,0 +1,20 @@
+<idea-plugin>
+  <id>com.intellij.ohmyidea</id>
+  <name>oh-my-idea</name>
+  <description>IDEA helper</description>
+  <version>1.0.0</version>
+  <vendor url="http://codecode.fun">vsmysee</vendor>
+
+
+  <application-components>
+    <component>
+      <implementation-class>com.intellij.ide.actions.App</implementation-class>
+    </component>
+  </application-components>
+
+  <extensions defaultExtensionNs="com.intellij"></extensions>
+
+  <actions>
+  </actions>
+
+</idea-plugin>
