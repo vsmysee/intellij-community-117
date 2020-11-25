@@ -17,10 +17,10 @@
   </extensions>
 
   <actions>
-    <action id="POEM_BACK" class="com.intellij.ide.actions.poem.BackAction" icon="AllIcons.Actions.Back">
+    <action id="POEM_BACK" class="com.intellij.ide.actions.poem.BackAction" icon="/icons/prev.png">
       <keyboard-shortcut first-keystroke="alt 7" keymap="$default"/>
     </action>
-    <action id="POEM_FORWARD" class="com.intellij.ide.actions.poem.ForwardAction" icon="AllIcons.Actions.Forward">
+    <action id="POEM_FORWARD" class="com.intellij.ide.actions.poem.ForwardAction" icon="/icons/next.png">
       <keyboard-shortcut first-keystroke="alt 8" keymap="$default"/>
     </action>
   </actions>
