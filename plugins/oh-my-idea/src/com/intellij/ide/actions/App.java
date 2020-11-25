@@ -1,5 +1,6 @@
 package com.intellij.ide.actions;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -17,22 +18,24 @@ import org.jetbrains.annotations.NotNull;
 public class App implements ApplicationComponent {
 
   private static final String MODEACTION = "ChangeModeAction";
+  private static final String ACTION_KEY = "ctrl I";
 
   private MyTypedActionHandler handler;
 
-  public static EditorMode editorMode = EditorMode.COMMAND;
-
+  public static EditorMode editorMode = EditorMode.COMMAND1;
 
 
   public static enum EditorMode {
 
     INSERT,
 
-    COMMAND,
+    COMMAND1,
 
     COMMAND2,
 
-    COMMAND3
+    COMMAND3,
+
+    COMMAND4
 
   }
 
@@ -47,7 +50,14 @@ public class App implements ApplicationComponent {
     action.setupHandler(handler);
 
 
+    Disposable parentDisposable = new Disposable() {
+      @Override
+      public void dispose() {
+      }
+    };
+
     EditorFactory.getInstance().addEditorFactoryListener(new EditorFactoryAdapter() {
+
       public void editorCreated(EditorFactoryEvent event) {
         final Editor editor = event.getEditor();
         editor.getSettings().setBlockCursor(true);
@@ -58,7 +68,7 @@ public class App implements ApplicationComponent {
           acton = new AnAction() {
             @Override
             public void actionPerformed(AnActionEvent e) {
-              App.editorMode = EditorMode.COMMAND;
+              App.editorMode = EditorMode.COMMAND1;
               for (Editor editor : EditorFactory.getInstance().getAllEditors()) {
                 editor.getSettings().setBlockCursor(true);
               }
@@ -67,12 +77,11 @@ public class App implements ApplicationComponent {
           ActionManager.getInstance().registerAction(MODEACTION, acton);
         }
 
-
-        acton.registerCustomShortcutSet(CustomShortcutSet.fromString("ctrl I"), editor.getComponent());
+        acton.registerCustomShortcutSet(CustomShortcutSet.fromString(ACTION_KEY), editor.getComponent());
 
       }
 
-    });
+    }, parentDisposable);
   }
 
   @Override
