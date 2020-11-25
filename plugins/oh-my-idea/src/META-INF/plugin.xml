@@ -12,9 +12,17 @@
     </component>
   </application-components>
 
-  <extensions defaultExtensionNs="com.intellij"></extensions>
+  <extensions defaultExtensionNs="com.intellij">
+    <toolWindow id="ChinaPoem" anchor="right" factoryClass="com.intellij.ide.actions.poem.PoemToolWindowFactory"/>
+  </extensions>
 
   <actions>
+    <action id="POEM_BACK" class="com.intellij.ide.actions.poem.BackAction" icon="AllIcons.Actions.Back">
+      <keyboard-shortcut first-keystroke="alt 7" keymap="$default"/>
+    </action>
+    <action id="POEM_FORWARD" class="com.intellij.ide.actions.poem.ForwardAction" icon="AllIcons.Actions.Forward">
+      <keyboard-shortcut first-keystroke="alt 8" keymap="$default"/>
+    </action>
   </actions>
 
 </idea-plugin>
