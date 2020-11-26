@@ -93,8 +93,8 @@ public class PoemToolWindowFactory implements ToolWindowFactory {
     InputStream is = null;
     BufferedReader reader = null;
     try {
-      is = PoemToolWindowFactory.class.getResourceAsStream("/data.txt");
-      reader = new BufferedReader(new InputStreamReader(is));
+      is = PoemToolWindowFactory.class.getResourceAsStream("/icons/data.txt");
+      reader = new BufferedReader(new InputStreamReader(is,"UTF-8"));
       String line;
       while ((line = reader.readLine()) != null) {
         db.add(line);
