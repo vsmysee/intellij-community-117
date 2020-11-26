@@ -10,14 +10,22 @@ public class KeyDef {
     MyTypedActionHandler.modeMap.put(App.EditorMode.COMMAND1, new HashMap<String, String>() {{
 
       put("1", "FindInPath");
+      put("!", "Forward");
       put("2", "ReplaceInPath");
+      put("@", "Unwrap");
       put("3", "HideAllWindows");
+      put("#", "EditorPageUp");
       put("4", "$Cut");
+      put("$", "EditorPageDown");
       put("5", "EditorDuplicate");
+      put("%", "StepOver");
       put("6", "IntroduceVariable");
       put("7", "EditorDeleteLine");
+      put("&", "StepOut");
       put("8", "GotoFile");
+      put("*", "StepInto");
       put("9", "GotoClass");
+      put("(", "GotoSymbol");
       put("0", "CompileDirty");
       put("-", "OptimizeImports");
       put("=", "JumpToLastChange");
@@ -90,7 +98,6 @@ public class KeyDef {
       put("c", "EvaluateExpression");
 
       put("v", "ToggleLineBreakpoint");
-      put("V", "StepOver");
 
       put("b", "Back");
       put("B", "DebugClass");
@@ -121,7 +128,6 @@ public class KeyDef {
       put("4", "JumpToLastWindow");
       put("5", "ShowIntentionActions");
       put("6", "ExtractMethod");
-      put("7", "StepOut");
       put("8", "IntroduceParameter");
       put("9", "QuickJavaDoc");
       put("0", "HighlightUsagesInFile");
@@ -129,11 +135,9 @@ public class KeyDef {
       put("=", "IntroduceField");
 
       put("q", "EditorTextEndWithSelection");
-
       put("w", "ClassNameCompletion");
       put("e", "MoveLineUp");
       put("E", "MoveStatementUp");
-      put("r", "StepInto");
       put("u", "EditorToggleColumnMode");
 
       put("i", "InsertLiveTemplate");
@@ -142,9 +146,7 @@ public class KeyDef {
       put("/", "CommentByLineComment");
       put("?", "CommentByBlockComment");
       put("h", "CallHierarchy");
-      put("j", "Unwrap");
-      put("K", "EditorPageUp");
-      put("J", "EditorPageDown");
+
 
       put("P", "EditorToggleShowLineNumbers");
 
@@ -182,7 +184,6 @@ public class KeyDef {
       put("7", "GotoTest");
       put("8", "GotoRelated");
       put("9", "CloseActiveTab");
-      put("0", "GotoSymbol");
       put("-", "GotoAction");
       put("=", "FileStructurePopup");
 
@@ -218,7 +219,6 @@ public class KeyDef {
 
 
       put("'", "RemoveFromFavorites");
-      put("\"", "RemoveFromFavorites");
 
       put("z", "EditorContextInfo");
       put("x", "$Delete");
@@ -247,6 +247,7 @@ public class KeyDef {
       put("0", "GotoBookmark8");
       put("-", "GotoBookmark9");
       put("=", "ChooseRunConfiguration");
+
       put("q", "ChooseDebugConfiguration");
       put("w", "ToggleBookmark");
       put("W", "ToggleBookmarkWithMnemonic");
