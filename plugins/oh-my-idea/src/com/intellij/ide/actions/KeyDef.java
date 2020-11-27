@@ -11,25 +11,39 @@ public class KeyDef {
 
       put("1", "FindInPath");
       put("!", "Forward");
+
       put("2", "ReplaceInPath");
       put("@", "Unwrap");
+
       put("3", "HideAllWindows");
       put("#", "EditorPageUp");
+
       put("4", "$Cut");
-      put("$", "EditorPageDown");
+      put("$", "StepInto");
+
       put("5", "EditorDuplicate");
       put("%", "StepOver");
+
       put("6", "IntroduceVariable");
+      put("^", "RenameElement");
+
       put("7", "EditorDeleteLine");
       put("&", "StepOut");
+
       put("8", "GotoFile");
-      put("*", "StepInto");
+      put("*", "EditorPageDown");
+
       put("9", "GotoClass");
       put("(", "GotoSymbol");
+
       put("0", "CompileDirty");
+      put(")", "JumpToLastWindow");
+
       put("-", "OptimizeImports");
-      put("=", "JumpToLastChange");
+      put("_", "ShowIntentionActions");
+
       put("+", "JumpToNextChange");
+      put("=", "JumpToLastChange");
 
       put("q", "FindUsages");
       put("Q", "ShowUsages");
@@ -57,7 +71,6 @@ public class KeyDef {
 
       put("[", "Inline");
       put("]", "ImplementMethods");
-
 
       put("a", "RecentFiles");
       put("A", "RecentChangedFiles");
@@ -87,17 +100,22 @@ public class KeyDef {
       put("L", "EditorLineEnd");
 
       put(";", "RunClass");
+      put(":", "CodeCompletion");
 
       put("'", "GotoSuperMethod");
       put("\"", "OverrideMethods");
 
       put("z", "SurroundWith");
+      put("Z", "GotoLine");
+
       put("x", "$Delete");
       put("X", "EditorDeleteToLineEnd");
 
-      put("c", "EvaluateExpression");
+      put("c", "SmartTypeCompletion");
+      put("C", "EvaluateExpression");
 
       put("v", "ToggleLineBreakpoint");
+      put("V", "QuickJavaDoc");
 
       put("b", "Back");
       put("B", "DebugClass");
@@ -108,11 +126,11 @@ public class KeyDef {
       put("m", "MethodDown");
       put("M", "MethodUp");
 
-      put("<", "GotoPreviousError");
       put(".", "EditorCompleteStatement");
-
       put(">", "$Copy");
+
       put(",", "GotoNextError");
+      put("<", "GotoPreviousError");
 
       put("/", "Find");
       put("?", "Replace");
@@ -125,11 +143,13 @@ public class KeyDef {
 
       put("1", "EditorCodeBlockStartWithSelection");
       put("2", "EditorCodeBlockEndWithSelection");
-      put("4", "JumpToLastWindow");
-      put("5", "ShowIntentionActions");
+      put("3", "POEM_FORWARD");
+      put("4", "ProjectViewChangeView");
+      put("5", "ActivateVersionControlToolWindow");
       put("6", "ExtractMethod");
-      put("8", "IntroduceParameter");
-      put("9", "QuickJavaDoc");
+      put("7", "ActivateCommitToolWindow");
+      put("8", "POEM_BACK");
+      put("9", "IntroduceParameter");
       put("0", "HighlightUsagesInFile");
       put("-", "IntroduceConstant");
       put("=", "IntroduceField");
@@ -142,7 +162,6 @@ public class KeyDef {
 
       put("i", "InsertLiveTemplate");
 
-      put("l", "CodeCompletion");
       put("/", "CommentByLineComment");
       put("?", "CommentByBlockComment");
       put("h", "CallHierarchy");
@@ -159,8 +178,6 @@ public class KeyDef {
 
       put("<", "EditorCodeBlockStart");
       put(">", "EditorCodeBlockEnd");
-      put("f", "SmartTypeCompletion");
-      put("N", "GotoLine");
 
 
       put("s", "ActivateStructureToolWindow");
@@ -169,6 +186,7 @@ public class KeyDef {
       put("m", "ActivateMessagesToolWindow");
       put("o", "ActivateTODOToolWindow");
       put("f", "ActivateFavoritesToolWindow");
+
 
     }});
 
