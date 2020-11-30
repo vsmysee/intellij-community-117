@@ -23,6 +23,7 @@
     <action id="POEM_FORWARD" class="com.intellij.ide.actions.poem.ForwardAction" icon="/icons/next.png">
       <keyboard-shortcut first-keystroke="alt 8" keymap="$default"/>
     </action>
+    <action id="ShowSelectActions" class="com.intellij.ide.actions.ActionPop"/>
   </actions>
 
 </idea-plugin>

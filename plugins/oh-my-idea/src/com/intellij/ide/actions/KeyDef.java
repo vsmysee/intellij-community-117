@@ -9,8 +9,11 @@ public class KeyDef {
 
     MyTypedActionHandler.modeMap.put(App.EditorMode.COMMAND1, new HashMap<String, String>() {{
 
+      put("a", "ShowSelectActions");
+
+
       put("1", "FindInPath");
-      put("!", "Forward");
+      put("!", "RecentFiles");
 
       put("2", "ReplaceInPath");
       put("@", "Unwrap");
@@ -72,7 +75,6 @@ public class KeyDef {
       put("[", "Inline");
       put("]", "ImplementMethods");
 
-      put("a", "RecentFiles");
       put("A", "RecentChangedFiles");
 
       put("s", "NextSplitter");
@@ -141,6 +143,9 @@ public class KeyDef {
     //y
     MyTypedActionHandler.modeMap.put(App.EditorMode.COMMAND2, new HashMap<String, String>() {{
 
+      put("a", "ShowSelectActions");
+
+
       put("1", "EditorCodeBlockStartWithSelection");
       put("2", "EditorCodeBlockEndWithSelection");
       put("3", "POEM_FORWARD");
@@ -159,6 +164,9 @@ public class KeyDef {
       put("e", "MoveLineUp");
       put("E", "MoveStatementUp");
       put("u", "EditorToggleColumnMode");
+
+      put("B", "Forward");
+
 
       put("i", "InsertLiveTemplate");
 
@@ -194,6 +202,9 @@ public class KeyDef {
     //Y
     MyTypedActionHandler.modeMap.put(App.EditorMode.COMMAND3, new HashMap<String, String>() {{
 
+      put("a", "ShowSelectActions");
+
+
       put("1", "ShowNavBar");
       put("2", "ShowSettings");
       put("3", "ShowProjectStructureSettings");
@@ -215,7 +226,7 @@ public class KeyDef {
       put("o", "NextParameter");
       put("O", "PrevParameter");
 
-      put("a", "$SelectAll");
+      put("S", "$SelectAll");
       put("s", "Switcher");
       put("f", "AddToFavoritesPopup");
       put("g", "Resume");
@@ -254,6 +265,9 @@ public class KeyDef {
     //I
     MyTypedActionHandler.modeMap.put(App.EditorMode.COMMAND4, new HashMap<String, String>() {{
 
+      put("a", "ShowSelectActions");
+
+
       put("1", "GotoBookmark0");
       put("2", "GotoBookmark1");
       put("3", "GotoBookmark2");
@@ -270,7 +284,6 @@ public class KeyDef {
       put("w", "ToggleBookmark");
       put("W", "ToggleBookmarkWithMnemonic");
       put("e", "AutoIndentLines");
-      put("b", "ShowBookmarks");
       put("n", "EditorBackSpace");
       put("N", "EditorDelete");
 
